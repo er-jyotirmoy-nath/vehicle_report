@@ -132,37 +132,102 @@
             <label for="recipient-name" class="form-control-label">Vehicle Id:</label>
             <input type="text" class="form-control" id="vehicle_id">
           </div>
-            <label>Maintenance Details</label><hr>
-            <table class="table table-bordered">
+          <div class="row">
+              <div class="col-sm-4">
+              <label>Oil Details</label>
+                <table class="table table-bordered">
                         <thead><tr>
                                
-                                 <th>Oil Change Date</th>
-                                  <th>Oil Change Km</th>
-                                  <th>Air Filter Date</th>
-                                  <th>Air Filter Km</th>
-                                  <th>Fuel Filter Date</th>
-                                  <th>Fuel Filter Km</th>
-                                  <th>Battery Change Date</th>
-                                  <th>Steering Oil Date</th>
+                                 <th>Change Date</th>
+                                  <th>Kilometers</th>
+                                  <th>Exp Date</th>
+                                
                     </tr></thead>
-                        <tbody id="mtd_details">
+                        <tbody id="oil_details">
                             
                         </tbody>
             </table>
-            <label>Tire Details</label><hr>
-            <table class="table table-bordered">
+              </div>
+              <div class="col-sm-4">
+               <label>Air Details</label>
+                 <table class="table table-bordered">
                         <thead><tr>
                                
-                                 <th>Tire ID</th>
-                                  <th>Tire Number</th>
-                                  <th>Tire Change Date</th>
-                                  <th>Tire Change KM</th>
+                                
+                                  <th>Change Date</th>
+                                  <th>Kilometers</th>
+                                  <th>Exp Date</th>
+                    </tr></thead>
+                        <tbody id="air_details">
+                            
+                        </tbody>
+            </table>
+              </div>
+              <div class="col-sm-4">
+                <label>Fuel Details</label>
+                 <table class="table table-bordered">
+                        <thead><tr>
+                               
                                  
+                                  <th>Change Date</th>
+                                  <th>Kilometers</th>
+                                  <th>Exp Date</th>
+                                  
+                    </tr></thead>
+                        <tbody id="fuel_details">
+                            
+                        </tbody>
+            </table>
+              </div> 
+
+            </div>
+
+            <div class="row">
+              <div class="col-sm-4">
+                <label>Battery Details</label>
+                 <table class="table table-bordered">
+                        <thead><tr>
+                               
+                                 <th>Change Date</th>
+                                 <th>Exp Date</th>
+                                  
+                    </tr></thead>
+                        <tbody id="btr_details">
+                            
+                        </tbody>
+            </table>
+              </div>
+              <div class="col-sm-4">
+                <label>Steering Wheel Details</label>
+                <table class="table table-bordered">
+                        <thead><tr>
+                               
+                                 <th>Change Date</th>
+                                 <th>Exp Date</th>
+                                  
+                    </tr></thead>
+                        <tbody id="ster_details">
+                            
+                        </tbody>
+            </table>
+              </div>
+              <div class="col-sm-4">
+                <label>Tire Details</label>
+                <table class="table table-bordered">
+                        <thead><tr>
+                                  <th>Tire Number</th>
+                                 <th>Change Date</th>
+                                 <th>Exp Date</th>
+                                  
                     </tr></thead>
                         <tbody id="tire_details">
                             
                         </tbody>
             </table>
+              </div>
+            </div>
+           
+           
         </form>
       </div>
       <div class="modal-footer">
@@ -183,8 +248,19 @@
   var modal = $(this);
  
   modal.find('.modal-body input').val(recipient1);
-  send_data = [];
-  send_data[0] = recipient;
+  oil_dtls(recipient);
+  air_dtls(recipient);
+  fuel_dtls(recipient);
+  battery_dtls(recipient);
+  steering_dtls(recipient);
+  tire_details(recipient);
+});
+</script>
+<script type="text/javascript">
+  function oil_dtls(vid){
+    oil_res = '';
+    send_data = [];
+  send_data[0] = vid;
   $.ajax({
       url:"admin/ajax_140724022017.php",
       method:"POST",
@@ -193,26 +269,120 @@
       afterSend:function(msg){},
       success:function(msg){
           $.each(JSON.parse(msg),function(i,field){
-              str_res += '<tr>'+
+              oil_res += '<tr>'+
                       '<td>'+field.oil_ch_dt+'</td>'+
                       '<td>'+field.oil_ch_km+'</td>'+
-                      '<td>'+field.air_filter_dt+'</td>'+
-                      '<td>'+field.air_filter_km+'</td>'+
-                      '<td>'+field.fuel_filter_dt+'</td>'+
-                      '<td>'+field.fuel_filter_km+'</td>'+
-                      '<td>'+field.bty_chg_dt+'</td>'+
-                      '<td>'+field.steering_oil_dt+'</td>'+
+                      '<td>'+field.oil_ch_exp+'</td>'+                     
                       '</tr>';
           });
-          $('#mtd_details').html(str_res);
+          $('#oil_details').html(oil_res);
       }
   });
-  tire_details(recipient);
-});
+  }
+</script>
+<script type="text/javascript">
+  function air_dtls(vid){
+    air_res = '';
+    send_data = [];
+  send_data[0] = vid;
+  $.ajax({
+      url:"admin/ajax_140724022017.php",
+      method:"POST",
+      data:{send_data:send_data},
+      beforeSend:function(msg){},
+      afterSend:function(msg){},
+      success:function(msg){
+          $.each(JSON.parse(msg),function(i,field){
+              air_res += '<tr>'+
+                      '<td>'+field.air_filter_dt+'</td>'+
+                      '<td>'+field.air_filter_km+'</td>'+
+                      '<td>'+field.air_filter_exp+'</td>'+                     
+                      '</tr>';
+          });
+          $('#air_details').html(air_res);
+      }
+  });
+  }
+</script>
+<script type="text/javascript">
+  function fuel_dtls(vid){
+    fuel_res = '';
+    send_data = [];
+  send_data[0] = vid;
+  $.ajax({
+      url:"admin/ajax_140724022017.php",
+      method:"POST",
+      data:{send_data:send_data},
+      beforeSend:function(msg){},
+      afterSend:function(msg){},
+      success:function(msg){
+          $.each(JSON.parse(msg),function(i,field){
+              fuel_res += '<tr>'+
+                      '<td>'+field.fuel_filter_dt+'</td>'+
+                      '<td>'+field.fuel_filter_km+'</td>'+
+                      '<td>'+field.fuel_filter_exp+'</td>'+                     
+                      '</tr>';
+          });
+          $('#fuel_details').html(fuel_res);
+      }
+  });
+  }
+</script>
+<script type="text/javascript">
+  function battery_dtls(vid){
+    battery_res = '';
+    send_data = [];
+  send_data[0] = vid;
+  $.ajax({
+      url:"admin/ajax_140724022017.php",
+      method:"POST",
+      data:{send_data:send_data},
+      beforeSend:function(msg){},
+      afterSend:function(msg){},
+      success:function(msg){
+          $.each(JSON.parse(msg),function(i,field){
+              battery_res += '<tr>'+
+                      '<td>'+field.bty_chg_dt+'</td>'+
+                      '<td>'+field.bty_chg_exp+'</td>'+
+                      '</tr>';
+          });
+          $('#btr_details').html(battery_res);
+      }
+  });
+  }
+</script>
+<script type="text/javascript">
+  function steering_dtls(vid){
+    steering_res = '';
+    send_data = [];
+  send_data[0] = vid;
+  $.ajax({
+      url:"admin/ajax_140724022017.php",
+      method:"POST",
+      data:{send_data:send_data},
+      beforeSend:function(msg){},
+      afterSend:function(msg){},
+      success:function(msg){
+          $.each(JSON.parse(msg),function(i,field){
+              steering_res += '<tr>'+
+                      '<td>'+field.steering_oil_dt+'</td>'+
+                      '<td>'+field.steering_oil_exp+'</td>'+
+                      '</tr>';
+          });
+          $('#ster_details').html(steering_res);
+      }
+  });
+  }
 </script>
 <script>
 function tire_details(a)
 {
+    /* '<td>'+field.air_filter_km+'</td>'+
+                      '<td>'+field.fuel_filter_dt+'</td>'+
+                      '<td>'+field.fuel_filter_km+'</td>'+
+                      '<td>'+field.bty_chg_dt+'</td>'+
+                      '<td>'+field.steering_oil_dt+'</td>'+*/
+
       send_data_tire = [];
       send_data_tire[0] = a;
       tire_str = '';
@@ -225,10 +395,9 @@ function tire_details(a)
       success:function(msg){
           $.each(JSON.parse(msg),function(i,field){
               tire_str += '<tr>'+
-                      '<td>'+field.tyre_id+'</td>'+
                       '<td>'+field.tyre_number+'</td>'+
                       '<td>'+field.tyre_chg_dt+'</td>'+
-                      '<td>'+field.tyre_chg_km+'</td>'+
+                      '<td>'+field.tyre_ch_exp+'</td>'+
                       '</tr>';
           });
           $('#tire_details').html(tire_str);

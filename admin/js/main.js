@@ -92,12 +92,17 @@ function getdata_maintain(a, b, c) {
                         '<td>' + field.BA_no + '</td>' +
                         '<td>' + field.oil_ch_dt + '</td>' +
                         '<td>' + field.oil_ch_km + '</td>' +
+                         '<td>' + field.oil_ch_exp + '</td>' +
                         '<td>' + field.air_filter_dt + '</td>' +
-                        '<td>' + field.air_filter_km + '</td>'
+                        '<td>' + field.air_filter_km + '</td>'+
+                        '<td>' + field.air_filter_exp + '</td>'
                         + '<td>' + field.fuel_filter_dt + '</td>' +
                         '<td>' + field.fuel_filter_km + '</td>' +
+                        '<td>' + field.fuel_filter_exp + '</td>' +
                         '<td>' + field.bty_chg_dt + '</td>' +
+                        '<td>' + field.bty_chg_exp + '</td>' +
                         '<td>' + field.steering_oil_dt + '</td>' +
+                        '<td>' + field.steering_oil_exp + '</td>' +
                         '</tr>';
                 s++;
                
@@ -137,6 +142,7 @@ function getdata_tire(a, b, c) {
                         '<td>' + field.tyre_number + '</td>' +
                         '<td>' + field.tyre_chg_dt + '</td>' +
                         '<td>' + field.tyre_chg_km + '</td>' +
+                        '<td>' + field.tyre_ch_exp + '</td>' +
                        
                         '</tr>';
                 s++;
@@ -283,6 +289,7 @@ $("#save_tire").click(function () {
     var veh_num_tire = $("#veh_num_tire").val();
     var tyre_chg_dt = $("#tyre_chg_dt").val();
     var tyre_chg_km = $("#tyre_chg_km").val();
+    var tyre_chg_exp = $("#tyre_chg_exp").val();
     var tyre_num = $("#tyre_num").val();
      
     
@@ -295,7 +302,7 @@ $("#save_tire").click(function () {
         tire_data_save[2] = tyre_chg_dt;
         tire_data_save[3] = tyre_chg_km;
         tire_data_save[4] = tyre_num;
-        
+        tire_data_save[5] = tyre_chg_exp;
         
         $.ajax({
             url: "ajax_140724022017.php",
@@ -323,12 +330,17 @@ $("#save_maintain").click(function () {
     var veh_num = $("#veh_num").val();
     var oil_ch_dt = $("#oil_ch_dt").val();
     var oil_ch_km = $("#oil_ch_km").val();
+    var oil_ch_exp = $("#oil_ch_exp").val();
     var air_filter_dt = $("#air_filter_dt").val();
     var air_filter_km = $("#air_filter_km").val();
+    var air_filter_exp = $("#air_filter_exp").val();
     var fuel_filter_dt = $("#fuel_filter_dt").val();
     var fuel_filter_km = $("#fuel_filter_km").val();
+     var fuel_filter_exp = $("#fuel_filter_exp").val();
     var bty_chg_dt = $("#bty_chg_dt").val();
+    var bty_chg_exp = $("#bty_chg_exp").val();
     var steering_oil_dt = $("#steering_oil_dt").val();
+    var steering_oil_exp = $("#steering_oil_exp").val();
 
     if (BA_no_sel == "") {
         alert("Please enter the mandetory details!");
@@ -344,6 +356,11 @@ $("#save_maintain").click(function () {
         man_data_save[7] = fuel_filter_km;
         man_data_save[8] = bty_chg_dt;
         man_data_save[9] = steering_oil_dt;
+        man_data_save[10] = oil_ch_exp;
+        man_data_save[11] = air_filter_exp;
+        man_data_save[12] = fuel_filter_exp;
+        man_data_save[13] = bty_chg_exp;
+        man_data_save[14] = steering_oil_exp;
         $.ajax({
             url: "ajax_140724022017.php",
             method: "post",

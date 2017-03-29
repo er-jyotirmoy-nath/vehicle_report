@@ -87,7 +87,7 @@ session_start();
             <h2>Admin Control</h2>
             <hr>
             <div class="row">
-                <div class="col-lg-2">
+                <div class="col-lg-2" style="width: 12%;">
                     <ul class="nav nav-pills nav-stacked">
                         <li class="active"><a data-toggle="pill" href="#home">Vehicle Master</a></li>
                         <li><a data-toggle="pill" href="#menu1">Maintenance Detail</a></li>
@@ -95,7 +95,7 @@ session_start();
                         <li><a data-toggle="pill" href="#menu3">Tools</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-10">
+                <div class="col-lg-10" style="width: 88%;">
                     <div class="tab-content">
                         <div id="home" class="tab-pane fade in active">
                             <div class="panel panel-success" style="border-color: #f44336;">

@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2017 at 07:54 PM
+-- Generation Time: Mar 29, 2017 at 08:41 AM
 -- Server version: 10.1.16-MariaDB
--- PHP Version: 5.6.24
+-- PHP Version: 7.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -53,22 +53,27 @@ CREATE TABLE `maint_dtl` (
   `BA_no` varchar(2000) NOT NULL,
   `oil_ch_dt` varchar(2000) NOT NULL,
   `oil_ch_km` varchar(2000) NOT NULL,
+  `oil_ch_exp` varchar(2000) NOT NULL,
   `air_filter_dt` varchar(2000) NOT NULL,
   `air_filter_km` varchar(2000) NOT NULL,
+  `air_filter_exp` varchar(2000) NOT NULL,
   `fuel_filter_dt` varchar(2000) NOT NULL,
   `fuel_filter_km` varchar(2000) NOT NULL,
+  `fuel_filter_exp` varchar(2000) NOT NULL,
   `bty_chg_dt` varchar(2000) NOT NULL,
-  `steering_oil_dt` varchar(2000) NOT NULL
+  `bty_chg_exp` varchar(2000) NOT NULL,
+  `steering_oil_dt` varchar(2000) NOT NULL,
+  `steering_oil_exp` varchar(2000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `maint_dtl`
 --
 
-INSERT INTO `maint_dtl` (`veh_id`, `BA_no`, `oil_ch_dt`, `oil_ch_km`, `air_filter_dt`, `air_filter_km`, `fuel_filter_dt`, `fuel_filter_km`, `bty_chg_dt`, `steering_oil_dt`) VALUES
-(3, 'DL 4C 3223', '2015-02-02', '2000', '2015-02-01', '2000', '2014-01-01', '2000', '2013-12-01', '2013-10-31'),
-(3, 'DL 4C 3223', '2017-02-02', '3000', '2014-02-01', '3000', '2014-01-01', '2000', '2013-12-01', '2013-10-31'),
-(2, 'DL 3C 0931', '2017-03-02', '2000', '2016-11-25', '2000', '2015-09-11', '2000', '2017-03-05', '2014-09-26');
+INSERT INTO `maint_dtl` (`veh_id`, `BA_no`, `oil_ch_dt`, `oil_ch_km`, `oil_ch_exp`, `air_filter_dt`, `air_filter_km`, `air_filter_exp`, `fuel_filter_dt`, `fuel_filter_km`, `fuel_filter_exp`, `bty_chg_dt`, `bty_chg_exp`, `steering_oil_dt`, `steering_oil_exp`) VALUES
+(2, 'DL 3C 0931', '2017-03-01', '2000', '2017-03-11', '2017-03-01', '2000', '2017-03-18', '2017-03-01', '2000', '2017-03-16', '2017-03-01', '2017-03-11', '2017-03-02', '2017-03-18'),
+(2, 'DL 3C 0931', '2017-03-11', '2000', '2017-03-15', '2017-03-12', '2000', '2017-03-25', '2017-03-11', '2000', '2017-03-19', '2017-03-05', '2017-03-23', '2017-03-11', '2017-03-25'),
+(3, 'DL 4C 3223', '2017-03-11', '2000', '2017-03-25', '2017-03-11', '2000', '2017-03-25', '2017-03-11', '2000', '2017-03-18', '2017-03-11', '2017-03-19', '2017-03-11', '2017-03-24');
 
 -- --------------------------------------------------------
 
@@ -81,16 +86,17 @@ CREATE TABLE `tyre_dtls_table` (
   `veh_id` varchar(2000) NOT NULL,
   `tyre_number` varchar(2000) NOT NULL,
   `tyre_chg_dt` varchar(2000) NOT NULL,
-  `tyre_chg_km` varchar(2000) NOT NULL
+  `tyre_chg_km` varchar(2000) NOT NULL,
+  `tyre_ch_exp` varchar(2000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tyre_dtls_table`
 --
 
-INSERT INTO `tyre_dtls_table` (`tyre_id`, `veh_id`, `tyre_number`, `tyre_chg_dt`, `tyre_chg_km`) VALUES
-(543454, '3', '4', '2017-03-03', '209'),
-(2123231, '2', '4', '2013-12-12', '3000');
+INSERT INTO `tyre_dtls_table` (`tyre_id`, `veh_id`, `tyre_number`, `tyre_chg_dt`, `tyre_chg_km`, `tyre_ch_exp`) VALUES
+(14234, '3', '4', '2017-03-11', '2000', '2017-03-25'),
+(21236, '2', '2', '2017-03-11', '2000', '2017-03-23');
 
 -- --------------------------------------------------------
 

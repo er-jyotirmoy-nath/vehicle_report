@@ -87,7 +87,7 @@
 
 <div class="modal fade" id="maintain_form" tabindex="-1" role="dialog"
      aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-lg" role="document" style=" width: 80%;">
         <div class="modal-content">
             <div class="modal-header"
                  style="background-color: #f44336; border-color: #f44336;">
@@ -101,9 +101,10 @@
                         
                             <tr>
                                 <td><label>BA Number:</label></td>
-                                <td><input name="BA_no_sel" readonly="readonly" id="BA_no_sel" type="text" class="form-control"
-                                           ></td>
+                                <td><input name="BA_no_sel" readonly="readonly" id="BA_no_sel" type="text" class="form-control"></td>
+                                           <td></td><td></td>
                                 <td><label>Vehicle Number:</label></td>
+
                                 <td><select  id="veh_num" class="form-control">
                                         <option>Loading</option>
 
@@ -116,6 +117,8 @@
                                 <td><input type="date" class="form-control" id="oil_ch_dt"></td>
                                 <td><label>Oil Change Km.:<font style="color: red;">*</font></label></td>
                                 <td><input name="oil_ch_km" id="oil_ch_km" type="text" class="form-control" value="" ></td>
+                                <td><label>Oil Change Exp.:<font style="color: red;">*</font></label></td>
+                                <td><input name="oil_ch_exp" id="oil_ch_exp" type="date" class="form-control" value="" ></td>
                             </tr>
 
 
@@ -130,6 +133,11 @@
                                     <input type="text" id="air_filter_km" class="form-control">
                                     <!-- All the information under the drop down is coming through java script and php -->
                                 </td>
+                                 <td><label>Air Filter Exp.:<font style="color: red;">*</font></label></td>
+                                <td>
+                                    <input type="date" id="air_filter_exp" class="form-control">
+                                  
+                                </td>
                             </tr>
 
                             <tr>
@@ -139,14 +147,28 @@
                                 <td><label>Fuel Filter Km.:<font style="color: red;">*</font></label></td>
                                 <td><input name="fuel_filter_km" id="fuel_filter_km" type="text" class="form-control"
                                            value="" size="30"></td>
+                                <td><label>Fuel Filter Exp.:<font style="color: red;">*</font></label></td>
+                                <td><input name="fuel_filter_exp" id="fuel_filter_exp" type="date" class="form-control"
+                                           value="" size="30"></td>
                             </tr>
                             <tr>
                                 <td><label>Battery Change Date:<font style="color: red;">*</font></label></td>
                                 <td>
                                     <input type="date" id="bty_chg_dt" class="form-control">
                                 </td>
-                                <td><label>Oil Change Date:<font style="color: red;">*</font></label></td>
+                                 <td></td><td></td>
+                                <td><label>Battery Change Exp.:<font style="color: red;">*</font></label></td>
+                                <td>
+                                    <input type="date" id="bty_chg_exp" class="form-control">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Streeing Change Date:<font style="color: red;">*</font></label></td>
                                 <td><input name="steering_oil_dt" id="steering_oil_dt" type="date"
+                                           class="form-control" value="" ></td>
+                                            <td></td><td></td>
+                                 <td><label>Streeing Change Exp:<font style="color: red;">*</font></label></td>
+                                <td><input name="steering_oil_exp" id="steering_oil_exp" type="date"
                                            class="form-control" value="" ></td>
                             </tr>
 
@@ -213,8 +235,8 @@
                          <tr>
                                 <td><label>Tire Number:<font style="color: red;">*</font></label></td>
                                 <td><input type="number" class="form-control" id="tyre_num"></td>
-                                <td></td>
-                                <td></td>
+                                <td><label>Tire Change Exp.:<font style="color: red;">*</font></label></td>
+                                <td><input type="date" class="form-control" id="tyre_chg_exp"></td>
                             </tr>
 
 

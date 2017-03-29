@@ -7,12 +7,17 @@
         <th>BA No.</th>
          <th>Oil Change Date</th>
         <th>Oil Change Km.</th>
+        <th>Oil Change Exp.</th>
          <th>Air Filter Date</th>
         <th>Air Filter Km.</th>
+        <th>Air Filter Exp.</th>
          <th>Fuel Filter Date</th>
         <th>Fuel Filter Km.</th>
+        <th>Fuel Filter Exp.</th>
         <th>Battery Change Date</th>
+        <th>Battery Change Exp</th>
         <th>Steering Oil Date</th>
+        <th>Steering Oil Exp</th>
       </tr>
     </thead>
     <tbody id="maintain_table">

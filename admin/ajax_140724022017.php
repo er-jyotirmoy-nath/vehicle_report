@@ -178,15 +178,16 @@ if (isset($_POST ["tire_data_save"] [0]) && isset($_POST ["tire_data_save"] [1])
         $tyre_chg_dt = $_POST ["tire_data_save"] [2];
         $tyre_chg_km = $_POST ["tire_data_save"] [3];
         $tyre_num = $_POST ["tire_data_save"] [4];
-
-        $sql_cred = 'INSERT INTO `tyre_dtls_table`(`tyre_id`, `veh_id`, `tyre_number`, `tyre_chg_dt`, `tyre_chg_km`) '
-                . 'VALUES (:tyre_id, :veh_num_tire, :tyre_num, :tyre_chg_dt, :tyre_chg_km )';
+        $tyre_ch_exp = $_POST ["tire_data_save"] [5];
+        $sql_cred = 'INSERT INTO `tyre_dtls_table`(`tyre_id`, `veh_id`, `tyre_number`, `tyre_chg_dt`, `tyre_chg_km`, `tyre_ch_exp`) '
+                . 'VALUES (:tyre_id, :veh_num_tire, :tyre_num, :tyre_chg_dt, :tyre_chg_km, :tyre_ch_exp)';
         $quer_cred = $bdd->prepare($sql_cred);
         $quer_cred->bindParam(":tyre_id", $tyre_id);
         $quer_cred->bindParam(":veh_num_tire", $veh_num_tire);
         $quer_cred->bindParam(":tyre_chg_dt", $tyre_chg_dt);
         $quer_cred->bindParam(":tyre_chg_km", $tyre_chg_km);
         $quer_cred->bindParam(":tyre_num", $tyre_num);
+        $quer_cred->bindParam(":tyre_ch_exp", $tyre_ch_exp);
         $quer_cred->execute();
         if ($quer_cred->rowCount() > 0)
             echo true;
@@ -210,13 +211,17 @@ if (isset($_POST ["man_data_save"] [0]) && isset($_POST ["man_data_save"] [1]) &
         $fuel_filter_km = $_POST ["man_data_save"] [7];
         $bty_chg_dt = $_POST ["man_data_save"] [8];
         $steering_oil_dt = $_POST ["man_data_save"] [9];
-
-        $sql_cred = 'INSERT INTO `maint_dtl`(`veh_id`, `BA_no`, `oil_ch_dt`, `oil_ch_km`,'
-                . ' `air_filter_dt`, `air_filter_km`, `fuel_filter_dt`, '
-                . '`fuel_filter_km`, `bty_chg_dt`, `steering_oil_dt`) VALUES '
-                . '(:veh_id,:BA_no,:oil_ch_dt,:oil_ch_km'
-                . ',:air_filter_dt,:air_filter_km,:fuel_filter_dt,:fuel_filter_km,'
-                . ':bty_chg_dt,:steering_oil_dt)';
+        $oil_ch_exp = $_POST ["man_data_save"] [10];
+        $air_filter_exp = $_POST ["man_data_save"] [11];
+        $fuel_filter_exp = $_POST ["man_data_save"] [12];
+        $bty_chg_exp = $_POST ["man_data_save"] [13];
+        $steering_oil_exp = $_POST ["man_data_save"] [14];
+        $sql_cred = 'INSERT INTO `maint_dtl`(`veh_id`, `BA_no`, `oil_ch_dt`, `oil_ch_km`, `oil_ch_exp`, `air_filter_dt`, `air_filter_km`, `air_filter_exp`, `fuel_filter_dt`,'
+                .'`fuel_filter_km`, `fuel_filter_exp`, `bty_chg_dt`, `bty_chg_exp`, `steering_oil_dt`, `steering_oil_exp`) VALUES '
+                . '(:veh_id,:BA_no,:oil_ch_dt,:oil_ch_km,:oil_ch_exp'
+                . ',:air_filter_dt,:air_filter_km,:air_filter_exp,'
+                .':fuel_filter_dt,:fuel_filter_km,:fuel_filter_exp,'
+                . ':bty_chg_dt,:bty_chg_exp,:steering_oil_dt,:steering_oil_exp)';
         $quer_cred = $bdd->prepare($sql_cred);
         $quer_cred->bindParam(":veh_id", $veh_num);
         $quer_cred->bindParam(":BA_no", $BA_no_sel);
@@ -228,7 +233,11 @@ if (isset($_POST ["man_data_save"] [0]) && isset($_POST ["man_data_save"] [1]) &
         $quer_cred->bindParam(":fuel_filter_km", $fuel_filter_km);
         $quer_cred->bindParam(":bty_chg_dt", $bty_chg_dt);
         $quer_cred->bindParam(":steering_oil_dt", $steering_oil_dt);
-
+        $quer_cred->bindParam(":oil_ch_exp", $oil_ch_exp);
+        $quer_cred->bindParam(":air_filter_exp", $air_filter_exp);
+        $quer_cred->bindParam(":fuel_filter_exp", $fuel_filter_exp);
+        $quer_cred->bindParam(":bty_chg_exp", $bty_chg_exp);
+        $quer_cred->bindParam(":steering_oil_exp", $steering_oil_exp);
         $quer_cred->execute();
         if ($quer_cred->rowCount() > 0)
             echo true;
