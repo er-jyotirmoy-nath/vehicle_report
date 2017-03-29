@@ -119,8 +119,9 @@
     </div>
 </div>
 
-<div class="modal fade" id="mtddetails" tabindex="-1" role="dialog" aria-labelledby="mtddetailsModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
+<div class="modal fade" id="mtddetails" tabindex="-1" role="dialog"
+     aria-labelledby="mtddetailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document" style="width: 80%;">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="mtddetailsModalLabel">Maintenance Details</h5>
