@@ -1,2 +1,2 @@
-# [117 Engineer Regimetn] - [Vehicle Information System]
+# 117 Engineer Regiment - Vehicle Information System
 
