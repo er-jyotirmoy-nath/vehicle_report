@@ -91,8 +91,8 @@ session_start();
                     <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a data-toggle="pill" href="#alerts">Alerts</a></li>
                         <li><a data-toggle="pill" href="#home">Vehicle Master</a></li>
-                        <li><a data-toggle="pill" href="#menu1">Maintenance Detail</a></li>
-                        <li><a data-toggle="pill" href="#menu2">Tire Detail</a></li>
+                        <li><a data-toggle="pill" href="#menu1">Maintenance</a></li>
+                        <li><a data-toggle="pill" href="#menu2">Tire</a></li>
                         <li><a data-toggle="pill" href="#menu3">Tools</a></li>
                     </ul>
                 </div>

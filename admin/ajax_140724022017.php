@@ -277,12 +277,17 @@ if (isset ( $_POST ['alert_days'] [0] ) && isset ( $_POST ['alert_days'] [1] ) &
 		
 		try {
 			$sql = "SELECT veh_id,BA_no,
-					DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'),STR_TO_DATE(`oil_ch_exp`,'%Y-%m-%d')) AS oil_days,
+					DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'),STR_TO_DATE(`oil_ch_exp`,'%Y-%m-%d')) AS oil_days, 
 					DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'), STR_TO_DATE(`air_filter_exp`,'%Y-%m-%d')) AS air_days,
 					DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'), STR_TO_DATE(`fuel_filter_exp`,'%Y-%m-%d')) AS fuel_days,
-					DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'), STR_TO_DATE(`bty_chg_exp`,'%Y-%m-%d')) AS bttr_days,
-					DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'), STR_TO_DATE(`steering_oil_exp`,'%Y-%m-%d')) AS steer_days
-					FROM `maint_dtl`";
+					DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'), STR_TO_DATE(`bty_chg_exp`,'%Y-%m-%d')) AS bttr_days, 
+					DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'), STR_TO_DATE(`steering_oil_exp`,'%Y-%m-%d')) AS steer_days 
+					FROM `maint_dtl`
+					where DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'),STR_TO_DATE(`oil_ch_exp`,'%Y-%m-%d')) <= 5 
+					or  DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'), STR_TO_DATE(`air_filter_exp`,'%Y-%m-%d')) <= 5 
+					or DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'), STR_TO_DATE(`fuel_filter_exp`,'%Y-%m-%d')) <= 5 
+					or DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'), STR_TO_DATE(`bty_chg_exp`,'%Y-%m-%d')) <- 5 
+					or DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'), STR_TO_DATE(`steering_oil_exp`,'%Y-%m-%d'))  <= 5";
 			$query = $bdd->prepare($sql);
 			$query->execute();
 			echo json_encode($query->fetchAll(PDO::FETCH_ASSOC));
@@ -299,12 +304,17 @@ if (isset ( $_POST ['alert_days'] [0] ) && isset ( $_POST ['alert_days'] [1] ) &
 	
 		try {
 			$sql = "SELECT veh_id,BA_no,
-					DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'),STR_TO_DATE(`oil_ch_exp`,'%Y-%m-%d')) AS oil_days,
+					DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'),STR_TO_DATE(`oil_ch_exp`,'%Y-%m-%d')) AS oil_days, 
 					DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'), STR_TO_DATE(`air_filter_exp`,'%Y-%m-%d')) AS air_days,
 					DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'), STR_TO_DATE(`fuel_filter_exp`,'%Y-%m-%d')) AS fuel_days,
-					DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'), STR_TO_DATE(`bty_chg_exp`,'%Y-%m-%d')) AS bttr_days,
-					DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'), STR_TO_DATE(`steering_oil_exp`,'%Y-%m-%d')) AS steer_days
-					FROM `maint_dtl`";
+					DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'), STR_TO_DATE(`bty_chg_exp`,'%Y-%m-%d')) AS bttr_days, 
+					DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'), STR_TO_DATE(`steering_oil_exp`,'%Y-%m-%d')) AS steer_days 
+					FROM `maint_dtl`
+					where DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'),STR_TO_DATE(`oil_ch_exp`,'%Y-%m-%d')) <= 5 
+					or  DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'), STR_TO_DATE(`air_filter_exp`,'%Y-%m-%d')) <= 5 
+					or DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'), STR_TO_DATE(`fuel_filter_exp`,'%Y-%m-%d')) <= 5 
+					or DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'), STR_TO_DATE(`bty_chg_exp`,'%Y-%m-%d')) <- 5 
+					or DATEDIFF(STR_TO_DATE(sysdate(),'%Y-%m-%d'), STR_TO_DATE(`steering_oil_exp`,'%Y-%m-%d'))  <= 5";
 			$query = $bdd->prepare($sql);
 			$query->execute();
 			echo json_encode($query->fetchAll(PDO::FETCH_ASSOC));

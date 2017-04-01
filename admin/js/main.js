@@ -456,7 +456,7 @@ function logout() {
 }
 
 function getdata_alert(a,b,c){
-	v1 = '';
+	v1 = '';style_str = 'style="color: coral;font-weight: bold; font-style: italic;"';
 	alert_days = [];
 	alert_days[0] = a;
 	alert_days[1] = b;
@@ -471,12 +471,12 @@ function getdata_alert(a,b,c){
 			$.each(jQuery.parseJSON(response_data), function (i, field) {
 	                
 
-	                v1 += '<tr><td> ' + field.BA_no + '</td>' +
-	                        '<td>' + field.oil_days + '</td>' +
-	                        '<td>' + field.air_days + '</td>' +
-	                        '<td>' + field.fuel_days + '</td>' +
-	                         '<td>' + field.bttr_days + '</td>' +
-	                        '<td>' + field.steer_days + '</td>' +
+	                v1 += 	'<tr><td>'+ field.BA_no + '</td>' +
+	                        '<td '+((field.oil_days<=5)?style_str:'')+'>' + field.oil_days + '</td>' +
+	                        '<td '+((field.air_days<=5)?style_str:'')+'>' + field.air_days + '</td>' +
+	                        '<td '+((field.fuel_days<=5)?style_str:'')+'>' + field.fuel_days + '</td>' +
+	                        '<td '+((field.bttr_days<=5)?style_str:'')+'>' + field.bttr_days + '</td>' +
+	                        '<td '+((field.steer_days<=5)?style_str:'')+'>' + field.steer_days + '</td>' +
 	                        
 	                        '</tr>';
 	              
