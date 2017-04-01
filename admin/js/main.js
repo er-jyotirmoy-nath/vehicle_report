@@ -6,6 +6,7 @@ $(document).ready(function () {
     getdata_veh_id("get", "all", "all");
     getdata_maintain("get", "all", "all");
     getdata_tire("get", "all", "all");
+    getdata_alert("get","all","all");
 });
 $('#tire_form').on('show.bs.modal', function (event) {
     $("#register_form2")[0].reset();
@@ -452,4 +453,36 @@ function logout() {
         }
     });
 
+}
+
+function getdata_alert(a,b,c){
+	v1 = '';
+	alert_days = [];
+	alert_days[0] = a;
+	alert_days[1] = b;
+	alert_days[2] = c;
+	$.ajax({
+		url:"ajax_140724022017.php",
+		method:"POST",
+		data:{alert_days:alert_days},
+		beforeSend:function(){},
+		afterSend:function(){},
+		success:function(response_data){
+			$.each(jQuery.parseJSON(response_data), function (i, field) {
+	                
+
+	                v1 += '<tr><td> ' + field.BA_no + '</td>' +
+	                        '<td>' + field.oil_days + '</td>' +
+	                        '<td>' + field.air_days + '</td>' +
+	                        '<td>' + field.fuel_days + '</td>' +
+	                         '<td>' + field.bttr_days + '</td>' +
+	                        '<td>' + field.steer_days + '</td>' +
+	                        
+	                        '</tr>';
+	              
+	               
+	            });
+			$('#alert_load_table').html(v1);
+		}
+	});
 }

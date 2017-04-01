@@ -89,7 +89,8 @@ session_start();
             <div class="row">
                 <div class="col-lg-2" style="width: 12%;">
                     <ul class="nav nav-pills nav-stacked">
-                        <li class="active"><a data-toggle="pill" href="#home">Vehicle Master</a></li>
+                    <li class="active"><a data-toggle="pill" href="#alerts">Alerts</a></li>
+                        <li><a data-toggle="pill" href="#home">Vehicle Master</a></li>
                         <li><a data-toggle="pill" href="#menu1">Maintenance Detail</a></li>
                         <li><a data-toggle="pill" href="#menu2">Tire Detail</a></li>
                         <li><a data-toggle="pill" href="#menu3">Tools</a></li>
@@ -97,7 +98,21 @@ session_start();
                 </div>
                 <div class="col-lg-10" style="width: 88%;">
                     <div class="tab-content">
-                        <div id="home" class="tab-pane fade in active">
+                      <div id="alerts" class="tab-pane fade in active">
+                            <div class="panel panel-success" style="border-color: #f44336;">
+                                <div class="panel-heading1">
+                                    <i class="fa fa-car" aria-hidden="true"></i>  Alerts
+                                    
+                                </div>
+                                <div class="panel-body" style="min-height: 170px; text-align: left;">
+                                   
+                                        <?php include_once 'alerts_man.php'; ?>
+                                   
+                                        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="home" class="tab-pane fade">
                             <div class="panel panel-success" style="border-color: #f44336;">
                                 <div class="panel-heading1">
                                     <i class="fa fa-car" aria-hidden="true"></i>  Vehicle Master

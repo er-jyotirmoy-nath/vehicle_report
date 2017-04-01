@@ -61,7 +61,7 @@ body {
 				<ul class="nav navbar-nav">
 					<li><a href="#" data-toggle="modal" data-target="#survey_form">Register New Vehicle</a></li>
 					<li><a href="find_loc.php">Find Your Vehicle</a></li>
-					<li><a href="#" data-toggle="modal" data-target="#adminLogin">Admin</a>
+					<li><a href="#" data-toggle="modal" data-target="#adminLogin">Login</a>
 					</li>
 				</ul>
 			</div>

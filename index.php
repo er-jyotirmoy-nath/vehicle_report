@@ -56,7 +56,7 @@ body {
 				<ul class="nav navbar-nav">
 					<li><a href="#" data-toggle="modal" data-target="#survey_form">Register New Vehicle</a></li>
 					<li><a href="find_loc.php">Find Your Vehicle</a></li>
-					<li><a href="#" data-toggle="modal" data-target="#adminLogin">Admin</a>
+					<li><a href="#" data-toggle="modal" data-target="#adminLogin">Login</a>
 					</li>
 				</ul>
 			</div>
@@ -126,8 +126,7 @@ body {
 						<button type="button" class="btn btn-primary btn-lg btn-block" 
 							data-toggle="modal" data-target="#adminLogin"
 							data-whatever="@mdo">
-							<i class="fa fa-hand-pointer-o" aria-hidden="true"></i> Admin
-							Login
+							<i class="fa fa-hand-pointer-o" aria-hidden="true"></i> Login
 						</button>
 
 					</div>
