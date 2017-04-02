@@ -193,7 +193,7 @@
 
 <div class="modal fade" id="tire_form" tabindex="-1" role="dialog"
      aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-lg" role="document" >
         <div class="modal-content">
             <div class="modal-header"
                  style="background-color: #f44336; border-color: #f44336;">
@@ -252,3 +252,138 @@
         </div>
     </div>
 </div>
+<!-- Edit Maintainance Details -->
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document" style=" width: 80%;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <form id="man_edit_form">
+                    <table class="table table-bordered"><!-- To show a  table with border -->
+                        <tbody>
+                        
+                            <tr>
+                                <td><label>BA Number:</label></td>
+                                <td><input name="BA_no_sel"  id="BA_no_sel" type="text" class="form-control"></td>
+                                           <td></td><td></td>
+                                <td><label>Vehicle Number:</label></td>
+
+                                <td><input type="text" id="veh_num" name="veh_num" class="form-control" ></td>
+                            </tr>
+
+
+                            <tr>
+                                <td><label>Oil Change Date:<font style="color: red;">*</font></label></td>
+                                <td><input type="date" class="form-control" id="oil_ch_dt" name="oil_ch_dt"></td>
+                                <td><label>Oil Change Km.:<font style="color: red;">*</font></label></td>
+                                <td><input name="oil_ch_km" id="oil_ch_km" name="oil_ch_km" type="text" class="form-control" value="" ></td>
+                                <td><label>Oil Change Exp.:<font style="color: red;">*</font></label></td>
+                                <td><input name="oil_ch_exp" id="oil_ch_exp" name="oil_ch_exp" type="date" class="form-control" value="" ></td>
+                            </tr>
+
+
+                            <tr>
+                                <td><label>Air Filter Date:<font style="color: red;">*</font></label></td>
+                                <td>
+                                    <input type="date" id="air_filter_dt" name="air_filter_dt" class="form-control">	
+                                    <!-- All the information under the drop down is coming through java script and php -->
+                                </td>
+                                <td><label>Air Filter Km.:<font style="color: red;">*</font></label></td>
+                                <td>
+                                    <input type="text" id="air_filter_km" name="air_filter_km" class="form-control">
+                                    <!-- All the information under the drop down is coming through java script and php -->
+                                </td>
+                                 <td><label>Air Filter Exp.:<font style="color: red;">*</font></label></td>
+                                <td>
+                                    <input type="date" id="air_filter_exp" name="air_filter_exp" class="form-control">
+                                  
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><label>Fuel Filter Date:<font style="color: red;">*</font></label></td>
+                                <td><input name="fuel_filter_dt" id="fuel_filter_dt" type="date" class="form-control"
+                                           value="" size="30"></td>
+                                <td><label>Fuel Filter Km.:<font style="color: red;">*</font></label></td>
+                                <td><input name="fuel_filter_km" id="fuel_filter_km" type="text" class="form-control"
+                                           value="" size="30"></td>
+                                <td><label>Fuel Filter Exp.:<font style="color: red;">*</font></label></td>
+                                <td><input name="fuel_filter_exp" id="fuel_filter_exp" type="date" class="form-control"
+                                           value="" size="30"></td>
+                            </tr>
+                            <tr>
+                                <td><label>Battery Change Date:<font style="color: red;">*</font></label></td>
+                                <td>
+                                    <input type="date" id="bty_chg_dt" name="bty_chg_dt" class="form-control">
+                                </td>
+                                 <td></td><td></td>
+                                <td><label>Battery Change Exp.:<font style="color: red;">*</font></label></td>
+                                <td>
+                                    <input type="date" id="bty_chg_exp" name="bty_chg_exp" class="form-control">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Streeing Change Date:<font style="color: red;">*</font></label></td>
+                                <td><input name="steering_oil_dt" id="steering_oil_dt" type="date"
+                                           class="form-control" value="" ></td>
+                                            <td></td><td></td>
+                                 <td><label>Streeing Change Exp:<font style="color: red;">*</font></label></td>
+                                <td><input name="steering_oil_exp" id="steering_oil_exp" type="date"
+                                           class="form-control" value="" ></td>
+                            </tr>
+
+
+
+                       
+
+
+                        </tbody>
+                    </table>
+                 </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="edit_save" name="edit_save" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+$('#editModal').on('show.bs.modal', function (event) {
+	  var button = $(event.relatedTarget);
+	  var recipient = button.data('whatever');
+	  $.get( "maintain_crud.php", { veh_id: recipient} )
+	  .done(function( data ) {
+	    console.log( JSON.parse(data) );
+		 var response =    JSON.parse(data);
+		 $("#editModal #BA_no_sel").val(response[0].BA_no);
+		 $("#editModal #veh_num").val(response[0].veh_id);
+		 $("#editModal #oil_ch_dt").val(response[0].oil_ch_dt);
+		 $("#editModal #oil_ch_km").val(response[0].oil_ch_km);
+		 $("#editModal #oil_ch_exp").val(response[0].oil_ch_exp);
+		 $("#editModal #air_filter_dt").val(response[0].air_filter_dt);
+		 $("#editModal #air_filter_km").val(response[0].air_filter_km);
+		 $("#editModal #air_filter_exp").val(response[0].air_filter_exp);
+		 $("#editModal #bty_chg_dt").val(response[0].bty_chg_dt);
+		 $("#editModal #bty_chg_exp").val(response[0].bty_chg_exp);
+		 $("#editModal #steering_oil_dt").val(response[0].steering_oil_dt);
+		 $("#editModal #steering_oil_exp").val(response[0].steering_oil_exp);
+		 $("#editModal #fuel_filter_dt").val(response[0].fuel_filter_dt);
+		 $("#editModal #fuel_filter_km").val(response[0].fuel_filter_km);
+		 $("#editModal #fuel_filter_exp").val(response[0].fuel_filter_exp);
+	  });
+	});
+</script>
+<script>
+$("#edit_save").click(function(){
+	$.post( "maintain_crud.php", $("#man_edit_form").serialize(),function(response){
+			console.log(response);
+		});
+});
+</script>

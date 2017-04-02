@@ -104,6 +104,7 @@ function getdata_maintain(a, b, c) {
                         '<td>' + field.bty_chg_exp + '</td>' +
                         '<td>' + field.steering_oil_dt + '</td>' +
                         '<td>' + field.steering_oil_exp + '</td>' +
+                        '<td>'+'<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" data-whatever="' + field.veh_id + '">Edit</button>'+'</td>'+
                         '</tr>';
                 s++;
                
@@ -486,3 +487,13 @@ function getdata_alert(a,b,c){
 		}
 	});
 }
+//Edit Maintenance Details
+$('#editModal').on('show.bs.modal', function (event) {
+	  var button = $(event.relatedTarget) // Button that triggered the modal
+	  var recipient = button.data('whatever') // Extract info from data-* attributes
+	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+	  var modal = $(this)
+	  modal.find('.modal-title').text('New message to ' + recipient)
+	  modal.find('.modal-body input').val(recipient)
+	})
